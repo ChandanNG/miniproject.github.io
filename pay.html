@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body bgcolor="grey" background="images/ssit.jpg">
+    <div class="container">
+    <form autocomplete="off" method="POST" name="google-sheet">
+        <img src="images/ssit1.png" width="200" height="200">
+        <h1>PROJECT DETAILS</h1><hr>
+        <h2>STUDENT INFORMATION:  </h2>
+        <p>usn:<input type="text"  placeholder="enter your usn" required name="0" value="" maxlength="7"></p>
+        <p>Name:<input type="text" placeholder="enter your name" required name="1" value=""></p>
+        <p>DOB:<input type="datetime-local" placeholder="enter your DOB" required name="2" value=""></p>
+        <fieldset>
+            <legend>Gender:</legend>
+        <p>
+            
+            male <input type="radio" name="3" value="Male"> Female <input type="radio" name="3" value="Female" id="" required>
+        </p>
+        </fieldset>
+        <p>Project title: <textarea name="4" id="address" cols="100" rows="8" placeholder="enter your project name" required></textarea></p>
+        <p>Email:<input type="email" name="5" id="email" placeholder="Enter your Email" required></p>
+        
+        <p>Contact:<input type="tel"  name="6" id="contact" placeholder="Enter your Contact" maxlength="10" pattern="^\d{10}$" required ></p>
+      
+            <p>
+                <button type="submit" name="submit" required>SUBMIT</button>
+           </p>     
+    <p>
+          <button type="reset" class="reset">RESET</button></p>
+          </form>
+          </div>
+          <script>
+            const scriptURL='https://script.google.com/macros/s/AKfycbzAzHKQh8Njns_wXuAytb_MKNW_4AYleGphPwQBEISUt7pOloVqUBrn6K5Y4H6jeJ0-cQ/exec'
+
+            const form =document.forms['google-sheet']
+
+            form.addEventListener('submit', e => {
+                e.preventDefault()
+                fetch(scriptURL,{ method:'POST',body: new FormData(form)})
+                .then(response => alert("Thanks for contacting us..!"))
+                .catch(error => console.error('Error!',error.message))
+            })
+          </script>
+</body>
+</html>
